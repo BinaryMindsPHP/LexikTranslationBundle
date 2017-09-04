@@ -269,7 +269,7 @@ class PropelStorage implements StorageInterface
      */
     public function getCountTransUnitByDomains()
     {
-        $results = TransUnitQuery::create()
+        $results = TransUnitQuery::create('TransUnit')
             ->withColumn('count(TransUnit.ID)', 'number')
             ->select(array('number', 'TransUnit.Domain'))
             ->groupBy('TransUnit.Domain')
@@ -288,7 +288,7 @@ class PropelStorage implements StorageInterface
      */
     public function getCountTranslationByLocales($domain)
     {
-        $results = TranslationQuery::create()
+        $results = TranslationQuery::create('Translation')
             ->join('TransUnit')
             ->where('TransUnit.Domain = ?', $domain)
             ->withColumn('count(Translation.ID)', 'number')

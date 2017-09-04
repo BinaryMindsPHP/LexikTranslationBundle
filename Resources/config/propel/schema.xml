@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database name="default" defaultIdMethod="native" package="src"
+<database name="default" defaultIdMethod="native"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  namespace="Lexik\Bundle\TranslationBundle\Propel"
   xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd">
 
-    <table name="lexik_translation_file" phpName="File" namespace="Lexik\Bundle\TranslationBundle\Propel">
+    <table name="lexik_translation_file" phpName="File">
         <behavior name="auto_add_pk" />
 
         <column name="domain" type="varchar" size="255" default="messages" required="true" />
@@ -13,14 +14,14 @@
         <column name="hash" type="varchar" size="255" />
     </table>
 
-    <table name="lexik_trans_unit" phpName="TransUnit" namespace="Lexik\Bundle\TranslationBundle\Propel">
+    <table name="lexik_trans_unit" phpName="TransUnit">
         <behavior name="auto_add_pk">
             <parameter name="phpName" value="Id" />
         </behavior>
         <behavior name="timestampable" />
 
-        <column name="domain" type="varchar" size="255" required="true" default="messages" />
-        <column name="key_name" phpName="Key" type="varchar" size="255" required="true" />
+        <column name="domain" type="varchar" size="160" required="true" default="messages" />
+        <column name="key_name" phpName="Key" type="varchar" size="160" required="true" />
 
         <unique>
             <unique-column name="key_name" />
@@ -28,7 +29,7 @@
         </unique>
     </table>
 
-    <table name="lexik_trans_unit_translations" phpName="Translation" namespace="Lexik\Bundle\TranslationBundle\Propel">
+    <table name="lexik_trans_unit_translations" phpName="Translation">
         <behavior name="auto_add_pk" />
         <behavior name="timestampable" />
 
