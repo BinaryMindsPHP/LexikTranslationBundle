@@ -105,6 +105,9 @@ class FileImporter
         $keys = array();
 
         foreach ($messageCatalogue->all($domain) as $key => $content) {
+            // Remove white spaces
+            $key = trim($key);
+
             if (!isset($content)) {
                 continue; // skip empty translation values
             }
